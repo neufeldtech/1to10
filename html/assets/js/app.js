@@ -85,7 +85,7 @@ function bidUp() {
   var round = getCurrentRound();
   var player = getCurrentPlayer();
   var currentBid = gs[round][player]['bid']
-  if (currentBid < 10) {
+  if (currentBid <= getCurrentRound()) {
     gs[round][player]['bid'] = gs[round][player]['bid'] + 1
     setGameScore(gs)
     draw()
@@ -104,13 +104,67 @@ function bidDown() {
   }
 }
 
+function actualUp() {
+  var gs = getGameScore();
+  var round = getCurrentRound();
+  var player = getCurrentPlayer();
+  var currentActual = gs[round][player]['actual']
+  if (currentActual <= getCurrentRound()) {
+    gs[round][player]['actual'] = gs[round][player]['actual'] + 1
+    setGameScore(gs)
+    calculateCurrentPlayerPoints()
+    draw()
+  }
+}
+
+function actualDown() {
+  var gs = getGameScore();
+  var round = getCurrentRound();
+  var player = getCurrentPlayer();
+  var currentActual = gs[round][player]['actual'];
+  if (currentActual > 0) {
+    gs[round][player]['actual'] = gs[round][player]['actual'] - 1
+  } else if (currentActual == 0) {
+    gs[round][player]['actual'] = null
+  }
+  setGameScore(gs)
+  calculateCurrentPlayerPoints()
+  draw()
+}
+
+function calculateCurrentPlayerPoints() {
+  var player = getCurrentPlayer();
+  var round = getCurrentRound();
+  var gs = getGameScore();
+  var bid = gs[round][player]['bid']
+  var actual = gs[round][player]['actual']
+
+  // only calculate the score if bid and actual are both filled in
+  if ((bid !== null) && (actual !== null)) {
+    if (bid === actual) {
+      // if bid equals actual
+      gs[round][player]['points'] = 10 + (2 * bid)
+    } else {
+      // if bid does not equal actual
+      var spread = Math.abs(bid - actual)
+      console.log(`spread: ${spread}`)
+      gs[round][player]['points'] = 10 - (2 * spread)
+    }
+  } else if (actual === null) {
+    // if you are trying to set the score for this round to 'not yet scored'
+    gs[round][player]['points'] = null
+  }
+  setGameScore(gs)
+
+
+}
 function draw() {
   console.debug('drawing the board..')
   // Draw the current round
   var round = getCurrentRound()
   var gs = getGameScore()
-  console.log(`Setting current round to array: ${round} - (Pretty round: ${gs[round]['round']})`)
   document.getElementById('currentRound').innerHTML = gs[round]['round']
+  // console.log(`Setting current round to array: ${round} - (Pretty round: ${gs[round]['round']})`)
 
   // Draw total bid
   document.getElementById('totalBid').innerHTML = getTotalBid(round)
