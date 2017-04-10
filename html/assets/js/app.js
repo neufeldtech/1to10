@@ -6,7 +6,7 @@ function setUpGame() {
   localStorage.clear()
   localStorage.setItem('gameScore', JSON.stringify(blankGameScore))
   localStorage.setItem('currentRound', 0)
-  localStorage.setItem('currentPlayer', 'player1')
+  changePlayer('player1')
   console.log('Setting up new game')
   draw()
 }
