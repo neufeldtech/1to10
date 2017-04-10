@@ -18,7 +18,7 @@
     <!--Settings row-->
     <div class="row height-ten">
       <div class="col-6">
-        <span class="">Player Names</span>
+        <!--<span class="">Player Names</span>-->
       </div>
       <div class="col-6">
         <span onclick="newGame()" class="pull-right">New Game</span>
@@ -92,25 +92,33 @@
     </div>
 
     <!--Points scored row-->
-    <div class="row height-ten">
+    <div class="row height-five">
       <div class="col-12">
         <h5 class="text-center">Points Scored: <span id="pointsScored"></span></h5>
       </div>
     </div>
 
     <!--Scorestrip row-->
-    <div class="row height-fifteen">
-      <div class="col-3 alert-info">
-        P1:<br><strong><span id="playerOneScore"></span></strong>
+    <div class="row height-twenty">
+      <div onclick="changePlayer('player1')" id="player1" class="col-3 alert-info">
+        <u>P1</u>
+        <br><i>Bid: <span id="playerOneBid"></span></i>
+        <br><strong><span id="playerOneScore"></span></strong>
       </div>
-      <div class="col-3">
-        P2:<br><strong><span id="playerTwoScore"></span></strong>
+      <div onclick="changePlayer('player2')" id="player2" class="col-3">
+        <u>P2</u>
+        <br><i>Bid: <span id="playerTwoBid"></span></i>
+        <br><strong><span id="playerTwoScore"></span></strong>
       </div>
-      <div class="col-3">
-        P3:<br><strong><span id="playerThreeScore"></span></strong>
+      <div onclick="changePlayer('player3')" id="player3" class="col-3">
+        <u>P3</u>
+        <br><i>Bid: <span id="playerThreeBid"></span></i>
+        <br><strong><span id="playerThreeScore"></span></strong>
       </div>
-      <div class="col-3">
-        P4:<br><strong><span id="playerFourScore"></span></strong>
+      <div onclick="changePlayer('player4')" id="player4" class="col-3">
+        <u>P4</u>
+        <br><i>Bid: <span id="playerFourBid"></span></i>
+        <br><strong><span id="playerFourScore"></span></strong>
       </div>
     </div>
 

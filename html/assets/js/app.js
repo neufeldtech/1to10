@@ -66,6 +66,10 @@ function getCurrentPlayer() {
   return localStorage.getItem('currentPlayer')
 }
 
+function setCurrentPlayer(player) {
+  return localStorage.setItem('currentPlayer', player)
+}
+
 function getCurrentPlayerPointsForCurrentRound() {
   var gs = getGameScore()
   var player = getCurrentPlayer()
@@ -150,6 +154,16 @@ function actualDown() {
   draw()
 }
 
+function changePlayer(player) {
+  setCurrentPlayer(player)
+  document.getElementById('player1').classList.remove('alert-info')
+  document.getElementById('player2').classList.remove('alert-info')
+  document.getElementById('player3').classList.remove('alert-info')
+  document.getElementById('player4').classList.remove('alert-info')
+  document.getElementById(player).classList.add('alert-info')
+  draw()
+}
+
 function calculateCurrentPlayerPoints() {
   var player = getCurrentPlayer();
   var round = getCurrentRound();
@@ -203,6 +217,12 @@ function draw() {
 
   // Draw points scored
   document.getElementById('pointsScored').innerHTML = getCurrentPlayerPointsForCurrentRound()
+
+  // Draw bids for each player
+  document.getElementById('playerOneBid').innerHTML = getBid('player1')
+  document.getElementById('playerTwoBid').innerHTML = getBid('player2')
+  document.getElementById('playerThreeBid').innerHTML = getBid('player3')
+  document.getElementById('playerFourBid').innerHTML = getBid('player4')
 }
 
 
