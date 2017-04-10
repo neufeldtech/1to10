@@ -66,6 +66,18 @@ function getCurrentPlayer() {
   return localStorage.getItem('currentPlayer')
 }
 
+function getCurrentPlayerPointsForCurrentRound() {
+  var gs = getGameScore()
+  var player = getCurrentPlayer()
+  var round = getCurrentRound()
+  var points = gs[round][player]['points']
+  if (points !== null) {
+    return points
+  } else {
+    return 0
+  }
+}
+
 function roundUp() {
   if (getCurrentRound() < 19) {
     setCurrentRound(getCurrentRound() + 1)
@@ -88,6 +100,7 @@ function bidUp() {
   if (currentBid <= getCurrentRound()) {
     gs[round][player]['bid'] = gs[round][player]['bid'] + 1
     setGameScore(gs)
+    calculateCurrentPlayerPoints()
     draw()
   }
 }
@@ -100,6 +113,7 @@ function bidDown() {
   if (currentBid > 0) {
     gs[round][player]['bid'] = gs[round][player]['bid'] - 1
     setGameScore(gs)
+    calculateCurrentPlayerPoints()
     draw()
   }
 }
@@ -110,7 +124,11 @@ function actualUp() {
   var player = getCurrentPlayer();
   var currentActual = gs[round][player]['actual']
   if (currentActual <= getCurrentRound()) {
-    gs[round][player]['actual'] = gs[round][player]['actual'] + 1
+    if (currentActual === null) {
+      gs[round][player]['actual'] = 0
+    } else {
+      gs[round][player]['actual'] = gs[round][player]['actual'] + 1
+    }
     setGameScore(gs)
     calculateCurrentPlayerPoints()
     draw()
@@ -155,9 +173,8 @@ function calculateCurrentPlayerPoints() {
     gs[round][player]['points'] = null
   }
   setGameScore(gs)
-
-
 }
+
 function draw() {
   console.debug('drawing the board..')
   // Draw the current round
@@ -184,6 +201,8 @@ function draw() {
   // Draw current player actual
   document.getElementById('actual').value = getActual(getCurrentPlayer())
 
+  // Draw points scored
+  document.getElementById('pointsScored').innerHTML = getCurrentPlayerPointsForCurrentRound()
 }
 
 

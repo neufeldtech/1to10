@@ -2,22 +2,22 @@ var blankGameScore = [
   {
     "round": "1",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -25,22 +25,22 @@ var blankGameScore = [
   {
     "round": "2",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -48,22 +48,22 @@ var blankGameScore = [
   {
     "round": "3",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -71,22 +71,22 @@ var blankGameScore = [
   {
     "round": "4",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -94,22 +94,22 @@ var blankGameScore = [
   {
     "round": "5",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -117,22 +117,22 @@ var blankGameScore = [
   {
     "round": "6",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -140,22 +140,22 @@ var blankGameScore = [
   {
     "round": "7",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -163,22 +163,22 @@ var blankGameScore = [
   {
     "round": "8",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -186,22 +186,22 @@ var blankGameScore = [
   {
     "round": "9",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -209,22 +209,22 @@ var blankGameScore = [
   {
     "round": "10",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -232,22 +232,22 @@ var blankGameScore = [
   {
     "round": "9 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -255,22 +255,22 @@ var blankGameScore = [
   {
     "round": "8 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -278,22 +278,22 @@ var blankGameScore = [
   {
     "round": "7 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -301,22 +301,22 @@ var blankGameScore = [
   {
     "round": "6 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -324,22 +324,22 @@ var blankGameScore = [
   {
     "round": "5 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -347,22 +347,22 @@ var blankGameScore = [
   {
     "round": "4 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -370,22 +370,22 @@ var blankGameScore = [
   {
     "round": "3 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -393,22 +393,22 @@ var blankGameScore = [
   {
     "round": "2 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -416,22 +416,22 @@ var blankGameScore = [
   {
     "round": "1 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
@@ -439,22 +439,22 @@ var blankGameScore = [
   {
     "round": "10 (2)",
     "player1": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player2": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player3": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     },
     "player4": {
-      "bid": null,
+      "bid": 0,
       "actual": null,
       "points": null
     }
