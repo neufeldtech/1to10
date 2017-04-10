@@ -244,6 +244,7 @@ function onLoad() {
     console.log('No game score found')
     setUpGame()
   }
+  changePlayer(getCurrentPlayer())
   draw()
 }
 
