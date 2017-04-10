@@ -41,6 +41,7 @@ function getTotalBid(round) {
     gs[round]['player3']['bid'] +
     gs[round]['player4']['bid']
 }
+
 function getPlayerScore(player) {
   var gs = getGameScore()
   var playerScore = 0;
@@ -60,6 +61,12 @@ function getActual(player) {
   var gs = getGameScore()
   var round = getCurrentRound()
   return gs[round][player]['actual']
+}
+
+function getMaxTricks(){
+  var round = getCurrentRound()
+  var gs = getGameScore();
+  return gs[round]['maxTricks']
 }
 
 function getCurrentPlayer() {
@@ -101,7 +108,7 @@ function bidUp() {
   var round = getCurrentRound();
   var player = getCurrentPlayer();
   var currentBid = gs[round][player]['bid']
-  if (currentBid <= getCurrentRound()) {
+  if (currentBid < getMaxTricks()) {
     gs[round][player]['bid'] = gs[round][player]['bid'] + 1
     setGameScore(gs)
     calculateCurrentPlayerPoints()
@@ -127,7 +134,7 @@ function actualUp() {
   var round = getCurrentRound();
   var player = getCurrentPlayer();
   var currentActual = gs[round][player]['actual']
-  if (currentActual <= getCurrentRound()) {
+  if (currentActual <  getMaxTricks()) {
     if (currentActual === null) {
       gs[round][player]['actual'] = 0
     } else {
@@ -199,6 +206,11 @@ function draw() {
 
   // Draw total bid
   document.getElementById('totalBid').innerHTML = getTotalBid(round)
+  if ((getTotalBid(round) === getMaxTricks()) && getMaxTricks() > 1 ){
+    document.querySelector('.totalBid').classList.add('red')
+  } else {
+    document.querySelector('.totalBid').classList.remove('red')
+  }
 
   // Draw player scores
   document.getElementById('playerOneScore').innerHTML = getPlayerScore('player1')
