@@ -206,10 +206,10 @@ function calculateCurrentPlayerPoints() {
 }
 
 function commitNames() {
-  localStorage.setItem('player1', document.getElementById('player-one-name').value.toUpperCase() || 'P1')
-  localStorage.setItem('player2', document.getElementById('player-two-name').value.toUpperCase() || 'P2')
-  localStorage.setItem('player3', document.getElementById('player-three-name').value.toUpperCase() || 'P3')
-  localStorage.setItem('player4', document.getElementById('player-four-name').value.toUpperCase() || 'P4')
+  localStorage.setItem('player1', document.getElementById('player-one-name').value.toUpperCase().substr(0,4) || 'P1')
+  localStorage.setItem('player2', document.getElementById('player-two-name').value.toUpperCase().substr(0,4) || 'P2')
+  localStorage.setItem('player3', document.getElementById('player-three-name').value.toUpperCase().substr(0,4) || 'P3')
+  localStorage.setItem('player4', document.getElementById('player-four-name').value.toUpperCase().substr(0,4) || 'P4')
   draw()
 }
 
