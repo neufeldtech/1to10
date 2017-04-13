@@ -239,10 +239,10 @@ function draw() {
   document.getElementById('playerName').innerHTML = getCurrentPlayerVanity()
 
   // Draw current player bid
-  document.getElementById('bid').value = getBid(getCurrentPlayer())
+  document.getElementById('bid').innerHTML = getBid(getCurrentPlayer())
 
   // Draw current player actual
-  document.getElementById('actual').value = getActual(getCurrentPlayer())
+  document.getElementById('actual').innerHTML = getActual(getCurrentPlayer())
 
   // Draw points scored
   document.getElementById('pointsScored').innerHTML = getCurrentPlayerPointsForCurrentRound()
