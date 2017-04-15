@@ -8,7 +8,7 @@ function setUpGame() {
   document.getElementById('player-two-name').value = null
   document.getElementById('player-three-name').value = null
   document.getElementById('player-four-name').value = null
-  
+
   localStorage.setItem('gameScore', JSON.stringify(blankGameScore))
   localStorage.setItem('currentRound', 0)
   changePlayer('player1')
@@ -47,6 +47,29 @@ function getTotalBid(round) {
     gs[round]['player4']['bid']
 }
 
+function getTotalActual(round) {
+  var gs = getGameScore()
+  return gs[round]['player1']['actual'] +
+    gs[round]['player2']['actual'] +
+    gs[round]['player3']['actual'] +
+    gs[round]['player4']['actual']
+}
+
+function roundScoringComplete() {
+  var gs = getGameScore();
+  var round = getCurrentRound();
+  var player1Actual = gs[round]['player1']['actual']
+  var player2Actual = gs[round]['player2']['actual']
+  var player3Actual = gs[round]['player3']['actual']
+  var player4Actual = gs[round]['player4']['actual']
+
+  if (player1Actual === null || player2Actual === null || player3Actual === null || player4Actual === null) {
+    return false
+  } else {
+    return true
+  }
+}
+
 function getPlayerScore(player) {
   var gs = getGameScore()
   var playerScore = 0;
@@ -79,7 +102,7 @@ function getCurrentPlayer() {
 }
 
 function getCurrentPlayerVanity() {
-  return localStorage.getItem(getCurrentPlayer()) || getCurrentPlayer().replace('layer','').toUpperCase()
+  return localStorage.getItem(getCurrentPlayer()) || getCurrentPlayer().replace('layer', '').toUpperCase()
 }
 
 function setCurrentPlayer(player) {
@@ -206,15 +229,15 @@ function calculateCurrentPlayerPoints() {
 }
 
 function commitNames() {
-  localStorage.setItem('player1', document.getElementById('player-one-name').value.toUpperCase().substr(0,4) || 'P1')
-  localStorage.setItem('player2', document.getElementById('player-two-name').value.toUpperCase().substr(0,4) || 'P2')
-  localStorage.setItem('player3', document.getElementById('player-three-name').value.toUpperCase().substr(0,4) || 'P3')
-  localStorage.setItem('player4', document.getElementById('player-four-name').value.toUpperCase().substr(0,4) || 'P4')
+  localStorage.setItem('player1', document.getElementById('player-one-name').value.toUpperCase().substr(0, 4) || 'P1')
+  localStorage.setItem('player2', document.getElementById('player-two-name').value.toUpperCase().substr(0, 4) || 'P2')
+  localStorage.setItem('player3', document.getElementById('player-three-name').value.toUpperCase().substr(0, 4) || 'P3')
+  localStorage.setItem('player4', document.getElementById('player-four-name').value.toUpperCase().substr(0, 4) || 'P4')
   draw()
 }
 
 function draw() {
-  console.debug('drawing the board..')
+  // console.debug('drawing the board..')
   // Draw the current round
   var round = getCurrentRound()
   var gs = getGameScore()
@@ -229,11 +252,34 @@ function draw() {
     document.querySelector('.totalBid').classList.remove('red')
   }
 
+  // Draw Actual warning if total tricks is not correct
+  if (roundScoringComplete() || getTotalActual(getCurrentRound()) > getMaxTricks()) {
+    if (getTotalActual(getCurrentRound()) !== getMaxTricks()) {
+      document.querySelector('.actual-label').classList.add('red')
+    } else {
+      document.querySelector('.actual-label').classList.remove('red')
+    }
+  } else {
+    document.querySelector('.actual-label').classList.remove('red')
+  }
+
   // Draw player scores
   document.getElementById('playerOneScore').innerHTML = getPlayerScore('player1')
   document.getElementById('playerTwoScore').innerHTML = getPlayerScore('player2')
   document.getElementById('playerThreeScore').innerHTML = getPlayerScore('player3')
   document.getElementById('playerFourScore').innerHTML = getPlayerScore('player4')
+
+  // Draw player actuals
+  document.getElementById('playerOneActual').innerHTML = getActual('player1')
+  document.getElementById('playerTwoActual').innerHTML = getActual('player2')
+  document.getElementById('playerThreeActual').innerHTML = getActual('player3')
+  document.getElementById('playerFourActual').innerHTML = getActual('player4')
+
+  // Draw player bids
+  document.getElementById('playerOneBid').innerHTML = getBid('player1')
+  document.getElementById('playerTwoBid').innerHTML = getBid('player2')
+  document.getElementById('playerThreeBid').innerHTML = getBid('player3')
+  document.getElementById('playerFourBid').innerHTML = getBid('player4')
 
   // Draw player name
   document.getElementById('playerName').innerHTML = getCurrentPlayerVanity()
@@ -247,11 +293,6 @@ function draw() {
   // Draw points scored
   document.getElementById('pointsScored').innerHTML = getCurrentPlayerPointsForCurrentRound()
 
-  // Draw bids for each player
-  document.getElementById('playerOneBid').innerHTML = getBid('player1')
-  document.getElementById('playerTwoBid').innerHTML = getBid('player2')
-  document.getElementById('playerThreeBid').innerHTML = getBid('player3')
-  document.getElementById('playerFourBid').innerHTML = getBid('player4')
 
   // Draw each player name
   document.getElementById('playerOneLabel').innerHTML = localStorage.getItem('player1') || 'P1'
