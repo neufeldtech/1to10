@@ -240,7 +240,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "9 (2)",
+    "round": "9<sup>2</sup>",
     "maxTricks": 9,
     "player1": {
       "bid": 0,
@@ -264,7 +264,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "8 (2)",
+    "round": "8<sup>2</sup>",
     "maxTricks": 8,
     "player1": {
       "bid": 0,
@@ -288,7 +288,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "7 (2)",
+    "round": "7<sup>2</sup>",
     "maxTricks": 7,
     "player1": {
       "bid": 0,
@@ -312,7 +312,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "6 (2)",
+    "round": "6<sup>2</sup>",
     "maxTricks": 6,
     "player1": {
       "bid": 0,
@@ -336,7 +336,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "5 (2)",
+    "round": "5<sup>2</sup>",
     "maxTricks": 5,
     "player1": {
       "bid": 0,
@@ -360,7 +360,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "4 (2)",
+    "round": "4<sup>2</sup>",
     "maxTricks": 4,
     "player1": {
       "bid": 0,
@@ -384,7 +384,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "3 (2)",
+    "round": "3<sup>2</sup>",
     "maxTricks": 3,
     "player1": {
       "bid": 0,
@@ -408,7 +408,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "2 (2)",
+    "round": "2<sup>2</sup>",
     "maxTricks": 2,
     "player1": {
       "bid": 0,
@@ -432,7 +432,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "1 (2)",
+    "round": "1<sup>2</sup>",
     "maxTricks": 1,
     "player1": {
       "bid": 0,
@@ -456,7 +456,7 @@ var blankGameScore = [
     }
   },
   {
-    "round": "10 (2)",
+    "round": "10<sup>2</sup>",
     "maxTricks": 10,
     "player1": {
       "bid": 0,

@@ -247,20 +247,20 @@ function draw() {
   // Draw total bid
   document.getElementById('totalBid').innerHTML = getTotalBid(round)
   if ((getTotalBid(round) === getMaxTricks()) && getMaxTricks() > 1) {
-    document.querySelector('.totalBid').classList.add('red')
+    $('.totalBid').addClass('red animated bounce')
   } else {
-    document.querySelector('.totalBid').classList.remove('red')
+    $('.totalBid').removeClass('red animated bounce')
   }
 
   // Draw Actual warning if total tricks is not correct
   if (roundScoringComplete() || getTotalActual(getCurrentRound()) > getMaxTricks()) {
     if (getTotalActual(getCurrentRound()) !== getMaxTricks()) {
-      document.querySelector('.actual-label').classList.add('red')
+      $('.actual-label').addClass('red animated shake')
     } else {
-      document.querySelector('.actual-label').classList.remove('red')
+      $('.actual-label').removeClass('red animated shake')
     }
   } else {
-    document.querySelector('.actual-label').classList.remove('red')
+    $('.actual-label').removeClass('red animated shake')
   }
 
   // Draw player scores
@@ -316,6 +316,5 @@ function onLoad() {
 
   changePlayer(getCurrentPlayer())
   draw()
+  $('#loading').fadeOut()
 }
-
-onLoad()
