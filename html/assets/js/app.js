@@ -1,6 +1,7 @@
 var gameScore;
 var currentRound; //CurrentRound is the array index, not the human-friendly round number
 var currentPlayer;
+var vibrateAmount = 250;
 
 function setUpGame() {
   localStorage.clear()
@@ -14,6 +15,12 @@ function setUpGame() {
   changePlayer('player1')
   console.log('Setting up new game')
   draw()
+}
+
+function vibe(i) {
+  if (navigator.vibrate) {
+    navigator.vibrate(i)
+  }
 }
 
 function newGame() {
@@ -122,6 +129,7 @@ function getCurrentPlayerPointsForCurrentRound() {
 }
 
 function roundUp() {
+  vibe(vibrateAmount)
   if (getCurrentRound() < 19) {
     setCurrentRound(getCurrentRound() + 1)
     draw()
@@ -129,6 +137,7 @@ function roundUp() {
 }
 
 function roundDown() {
+  vibe(vibrateAmount)
   if (getCurrentRound() > 0) {
     setCurrentRound(getCurrentRound() - 1)
     draw()
@@ -136,6 +145,7 @@ function roundDown() {
 }
 
 function bidUp() {
+  vibe(vibrateAmount)
   var gs = getGameScore();
   var round = getCurrentRound();
   var player = getCurrentPlayer();
@@ -149,6 +159,7 @@ function bidUp() {
 }
 
 function bidDown() {
+  vibe(vibrateAmount)
   var gs = getGameScore();
   var round = getCurrentRound();
   var player = getCurrentPlayer();
@@ -162,6 +173,7 @@ function bidDown() {
 }
 
 function actualUp() {
+  vibe(vibrateAmount)
   var gs = getGameScore();
   var round = getCurrentRound();
   var player = getCurrentPlayer();
@@ -179,6 +191,7 @@ function actualUp() {
 }
 
 function actualDown() {
+  vibe(vibrateAmount)
   var gs = getGameScore();
   var round = getCurrentRound();
   var player = getCurrentPlayer();
@@ -194,6 +207,7 @@ function actualDown() {
 }
 
 function changePlayer(player) {
+  vibe(vibrateAmount)
   setCurrentPlayer(player)
   document.getElementById('player1').classList.remove('alert-info')
   document.getElementById('player2').classList.remove('alert-info')
@@ -303,6 +317,7 @@ function draw() {
 
 
 function onLoad() {
+  navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
   // Set up blank game if there is no game state
   if (!localStorage.getItem('gameScore')) {
     console.log('No game score found')
