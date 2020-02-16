@@ -1,7 +1,7 @@
 var gameScore;
 var currentRound; //CurrentRound is the array index, not the human-friendly round number
 var currentPlayer;
-var vibrateAmount = 250;
+var vibrateAmount = 100;
 
 function setUpGame() {
   localStorage.clear()
