@@ -254,11 +254,15 @@ const store = new Vuex.Store({
           if (runningTotals[playerKey] === undefined) {
             runningTotals[playerKey] = 0;
           }
-          let thisRoundScore = Vue.helpers.calculateRoundScore(
-            round[`wants${playerKey}`],
-            round[`gots${playerKey}`]
-          );
-          runningTotals[playerKey] += thisRoundScore;
+          let want = round[`wants${playerKey}`]
+          let got = round[`gots${playerKey}`]
+          if (got != null) {
+            let thisRoundScore = Vue.helpers.calculateRoundScore(
+              want,
+              got,
+            );
+            runningTotals[playerKey] += thisRoundScore;
+          }
         }
       }
       return runningTotals;

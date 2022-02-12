@@ -97,35 +97,14 @@ export default {
       return scores;
     },
   },
-  // watch: {
-  //   currentPlayer(newPlayer) {
-  //     this.$set(this.shouldShowGot, newPlayer.id, true);
-  //   },
-  // },
+
   methods: {
     roundScoreChip(want, got) {
       let num = this.calculateRoundScore(want, got);
       let sign = num < 0 ? "-" : "+";
       return `${sign}${num}`;
     },
-    // shouldDisplayGotForPlayerID(playerID) {
-    //   if (this.roundState == "viewing") {
-    //     return true;
-    //   }
 
-    //   if (this.roundState == "scoring") {
-    //     if (this.playOrder.indexOf(playerID) == 0) {
-    //       return true;
-    //     }
-    //     if (this.currentPlayer.id == playerID) {
-    //       return true;
-    //     }
-    //     if (this.shouldShowGot[playerID]) {
-    //       return true;
-    //     }
-    //   }
-    //   return false;
-    // },
     calculateRoundScore: helpers.calculateRoundScore,
 
     colorForScore(s) {
