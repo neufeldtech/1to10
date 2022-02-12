@@ -16,9 +16,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     initialiseStore(state) {
-      // Check if the ID exists
       if (localStorage.getItem('store')) {
-        // Replace the state object with the stored item
         this.replaceState(
           Object.assign(state, JSON.parse(localStorage.getItem('store')))
         );
@@ -171,7 +169,7 @@ const store = new Vuex.Store({
   },
   getters: {
 
-    tricks: (state) => {
+    tricks(state) {
       if (state.round === 20) {
         return 10;
       }
@@ -180,10 +178,10 @@ const store = new Vuex.Store({
       }
       return state.round;
     },
-    currentPlayer: (state, getters) => {
+    currentPlayer(state, getters) {
       return state.score[getters.currentRoundIndex].currentPlayer;
     },
-    currentPlayerObj: (state, getters) => {
+    currentPlayerObj(state, getters) {
       if (
         state.score[getters.currentRoundIndex] &&
         state.score[getters.currentRoundIndex].currentPlayer
@@ -192,7 +190,7 @@ const store = new Vuex.Store({
       }
       return {};
     },
-    currentState: (state, getters) => {
+    currentState(state, getters) {
       if (
         state.score[getters.currentRoundIndex] &&
         state.score[getters.currentRoundIndex].state
@@ -201,13 +199,13 @@ const store = new Vuex.Store({
       }
       return "setup";
     },
-    currentRound: (state) => {
+    currentRound(state) {
       return state.round;
     },
     players(state) {
       return state.players
     },
-    nextRoundAvailable: (state, getters) => {
+    nextRoundAvailable(state, getters) {
       if (
         getters.currentRound < 20 &&
         state.score[getters.currentRoundIndex] &&
@@ -217,7 +215,7 @@ const store = new Vuex.Store({
       }
       return false;
     },
-    prevRoundAvailable: (state, getters) => {
+    prevRoundAvailable(state, getters) {
       if (getters.currentRound == 1) {
         return false;
       }
@@ -238,7 +236,7 @@ const store = new Vuex.Store({
       }
       return true;
     },
-    playerTotals: (state) => {
+    playerTotals(state) {
       let runningTotals = {};
       for (let roundKey of Object.keys(state.score)) {
         let round = state.score[roundKey];
@@ -267,10 +265,10 @@ const store = new Vuex.Store({
       }
       return runningTotals;
     },
-    currentRoundScoreState: (state, getters) => {
+    currentRoundScoreState(state, getters) {
       return state.score[getters.currentRoundIndex];
     },
-    playOrder: (state, getters) => {
+    playOrder(state, getters) {
       if (
         state.score[getters.currentRoundIndex] &&
         state.score[getters.currentRoundIndex].playOrder
@@ -279,21 +277,21 @@ const store = new Vuex.Store({
       }
       return [];
     },
-    currentRoundIndex: (state, getters) => {
+    currentRoundIndex(state, getters) {
       return `round${getters.currentRound}`;
     },
-    currentPlayerIndex: (state, getters) => {
+    currentPlayerIndex(state, getters) {
       return `p${getters.currentPlayer}`;
     },
-    currentPlayerWant: (state, getters) => {
+    currentPlayerWant(state, getters) {
       let round = state.score[getters.currentRoundIndex];
       return round[`wants${getters.currentPlayerIndex}`];
     },
-    currentPlayerGot: (state, getters) => {
+    currentPlayerGot(state, getters) {
       let round = state.score[getters.currentRoundIndex];
       return round[`gots${getters.currentPlayerIndex}`];
     },
-    currentTotalBid: (state, getters) => {
+    currentTotalBid(state, getters) {
       let total = 0;
       let round = state.score[getters.currentRoundIndex];
       for (let playerKey of Object.keys(state.players)) {
@@ -301,7 +299,7 @@ const store = new Vuex.Store({
       }
       return total;
     },
-    currentTotalScored: (state, getters) => {
+    currentTotalScored(state, getters) {
       let total = 0;
       let round = state.score[getters.currentRoundIndex];
       for (let playerKey of Object.keys(state.players)) {
@@ -309,7 +307,7 @@ const store = new Vuex.Store({
       }
       return total;
     },
-    playerCount: (state) => {
+    playerCount(state) {
       return state.playersList.length;
     },
     showBidWarning(state, getters) {
@@ -330,37 +328,37 @@ const store = new Vuex.Store({
       }
       return false
     },
-    showBiddingCard: (state, getters) => {
+    showBiddingCard(state, getters) {
       if (getters.currentState == "bidding") {
         return true;
       }
       return false;
     },
-    showPlayingCard: (state, getters) => {
+    showPlayingCard(state, getters) {
       if (getters.currentState == "playing") {
         return true;
       }
       return false;
     },
-    showScoringCard: (state, getters) => {
+    showScoringCard(state, getters) {
       if (getters.currentState == "scoring") {
         return true;
       }
       return false;
     },
-    showViewingCard: (state, getters) => {
+    showViewingCard(state, getters) {
       if (getters.currentState == "viewing") {
         return true;
       }
       return false;
     },
-    showScoreboard: (state, getters) => {
+    showScoreboard(state, getters) {
       if (getters.currentState == "setup") {
         return false;
       }
       return true;
     },
-    showPlayerModal: (state, getters) => {
+    showPlayerModal(state, getters) {
       if (getters.playerCount < 3) {
         return true;
       }

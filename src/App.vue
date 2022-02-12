@@ -24,8 +24,6 @@ export default {
   components: {
     Game,
   },
-
-  // data() {},
   methods: {
     newGame() {
       if (confirm("Are you sure you want to start a new game?")) {
