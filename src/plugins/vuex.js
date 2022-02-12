@@ -8,51 +8,13 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     players: {
-      // p1: {
-      //   id: 1,
-      //   name: "",
-      // },
     },
     playersList: [],
     round: 1,
-    myscore: {
-      myround1: {
-        gots: {
-          p1: 1
-        }
-      },
-      myround2: {
-        gots: {
-          p2: 2
-        }
-      }
-    },
     score: {
-      // round1: {
-      //   tricks: 1,
-      //   playOrder: [2, 3, 4, 1],
-      //   dealer: 1
-      //   currentPlayer: 2
-      //   state: "setup", // setup / bidding / playing / scoring / viewing
-      //   wants: {
-      //     p1: 0,
-      //     p2: 1,
-      //     p3: 2,
-      //   },
-      //   gots: {
-      //     p1: 0,
-      //     p2: 1,
-      //     p3: 1,
-      //   },
-      // },
     },
-
   },
   mutations: {
-    increment(state) {
-      let round = 'myround1'
-      Vue.set(state.myscore[round].gots, 'p2', 3)
-    },
     initialiseStore(state) {
       // Check if the ID exists
       if (localStorage.getItem('store')) {
@@ -150,13 +112,12 @@ const store = new Vuex.Store({
         player: getters.playOrder[0]
       })
     },
-    commitRound({ commit, getters, dispatch }) {
+    commitRound({ commit, getters }) {
       commit({
         type: 'setState',
         round: getters.currentRound,
         state: 'viewing',
       })
-      dispatch({ type: 'nextRound' })
     },
     nextPlayer({ commit, getters }) {
       if (
@@ -209,9 +170,7 @@ const store = new Vuex.Store({
     },
   },
   getters: {
-    myscore(state) {
-      return state.myscore
-    },
+
     tricks: (state) => {
       if (state.round === 20) {
         return 10;
@@ -250,7 +209,7 @@ const store = new Vuex.Store({
     },
     nextRoundAvailable: (state, getters) => {
       if (
-        getters.currentRound <= 20 &&
+        getters.currentRound < 20 &&
         state.score[getters.currentRoundIndex] &&
         state.score[getters.currentRoundIndex].state == "viewing"
       ) {
@@ -324,37 +283,49 @@ const store = new Vuex.Store({
     },
     currentPlayerWant: (state, getters) => {
       let round = state.score[getters.currentRoundIndex];
-
       return round[`wants${getters.currentPlayerIndex}`];
-      // if (round && round.wants && round.wants[getters.currentPlayerIndex]) {
-      // }
-      // return 0;
     },
     currentPlayerGot: (state, getters) => {
       let round = state.score[getters.currentRoundIndex];
-
       return round[`gots${getters.currentPlayerIndex}`];
-      // let round = state.score[getters.currentRoundIndex];
-      // if (round && round.gots && round.gots[getters.currentPlayerIndex]) {
-      //   return round.gots[getters.currentPlayerIndex];
-      // }
-      // return null;
     },
     currentTotalBid: (state, getters) => {
       let total = 0;
       let round = state.score[getters.currentRoundIndex];
-      if (round && round.wants) {
-        for (let playerKey of Object.keys(round.wants)) {
-          total += round.wants[playerKey];
-        }
-        return total;
+      for (let playerKey of Object.keys(state.players)) {
+        total += round[`wants${playerKey}`];
       }
-      return 0;
+      return total;
+    },
+    currentTotalScored: (state, getters) => {
+      let total = 0;
+      let round = state.score[getters.currentRoundIndex];
+      for (let playerKey of Object.keys(state.players)) {
+        total += round[`gots${playerKey}`];
+      }
+      return total;
     },
     playerCount: (state) => {
       return state.playersList.length;
     },
-
+    showBidWarning(state, getters) {
+      if (getters.tricks == 1) {
+        return false
+      }
+      if (!getters.nextPlayerAvailable && getters.currentTotalBid == getters.tricks) {
+        return true
+      }
+      return false
+    },
+    showScoredWarning(state, getters) {
+      if (getters.currentTotalScored > getters.tricks) {
+        return true
+      }
+      if (!getters.nextPlayerAvailable && getters.currentTotalScored != getters.tricks) {
+        return true
+      }
+      return false
+    },
     showBiddingCard: (state, getters) => {
       if (getters.currentState == "bidding") {
         return true;
@@ -369,6 +340,12 @@ const store = new Vuex.Store({
     },
     showScoringCard: (state, getters) => {
       if (getters.currentState == "scoring") {
+        return true;
+      }
+      return false;
+    },
+    showViewingCard: (state, getters) => {
+      if (getters.currentState == "viewing") {
         return true;
       }
       return false;

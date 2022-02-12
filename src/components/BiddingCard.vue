@@ -4,7 +4,7 @@
     <v-card-text class="mb-0 pb-0">
       <p>Total bid: {{ totalBid }}</p>
       <v-divider></v-divider>
-      <v-alert dense type="error" outlined>
+      <v-alert v-show="showBidWarning" dense type="error" outlined>
         Total bid cannot equal number of tricks
       </v-alert>
       <v-slider
@@ -41,7 +41,7 @@
 
       <v-col cols="4" class="text-right">
         <v-btn
-          :disabled="nextPlayerAvailable"
+          :disabled="nextPlayerAvailable || showBidWarning"
           @click="startPlayingRound"
           small
           color="green"
@@ -80,6 +80,7 @@ export default {
       "currentPlayer",
       "currentPlayerObj",
       "currentRound",
+      "showBidWarning",
       "playOrder",
       "prevPlayerAvailable",
       "nextPlayerAvailable",

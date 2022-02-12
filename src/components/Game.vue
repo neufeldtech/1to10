@@ -5,21 +5,26 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-btn @click="prevRound" block>Prev </v-btn>
+        <v-btn :disabled="!prevRoundAvailable" @click="prevRound" block
+          >Prev
+        </v-btn>
       </v-col>
       <v-col class="text-center">
         <h5>Round {{ currentRound }}</h5>
         <h4>Tricks: {{ tricks }}</h4>
       </v-col>
       <v-col class="text-right">
-        <v-btn @click="nextRound" block> Next </v-btn>
+        <v-btn :disabled="!nextRoundAvailable" @click="nextRound" block>
+          Next
+        </v-btn>
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
-        <BiddingCard :key="currentRound" v-if="showBiddingCard" />
-        <PlayingCard :key="currentRound" v-if="showPlayingCard" />
-        <ScoringCard :key="currentRound" v-if="showScoringCard" />
+        <BiddingCard v-if="showBiddingCard" />
+        <PlayingCard v-if="showPlayingCard" />
+        <ScoringCard v-if="showScoringCard" />
+        <ViewingCard v-if="showViewingCard" />
       </v-col>
     </v-row>
     <v-row>
@@ -36,6 +41,7 @@ import BiddingCard from "./BiddingCard.vue";
 import PlayingCard from "./PlayingCard.vue";
 import ScoringCard from "./ScoringCard.vue";
 import Scoreboard from "./Scoreboard.vue";
+import ViewingCard from "./ViewingCard.vue";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
@@ -46,6 +52,7 @@ export default {
     PlayingCard,
     ScoringCard,
     Scoreboard,
+    ViewingCard,
   },
   methods: {
     ...mapActions(["prevRound", "nextRound"]),
@@ -53,14 +60,16 @@ export default {
   },
   computed: {
     ...mapGetters([
-      "myscore",
       "tricks",
       "currentRound",
       "showBiddingCard",
       "showPlayingCard",
       "showScoringCard",
+      "showViewingCard",
       "showScoreboard",
       "showPlayerModal",
+      "prevRoundAvailable",
+      "nextRoundAvailable",
     ]),
   },
 };

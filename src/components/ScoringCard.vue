@@ -4,7 +4,7 @@
     <v-card-text class="mb-0 pb-0">
       <p>Record number of tricks received</p>
       <v-divider></v-divider>
-      <v-alert dense type="error" outlined>
+      <v-alert v-show="showScoredWarning" dense type="error" outlined>
         Total tricks received from all players must equal {{ maxScore }}
       </v-alert>
       <v-slider
@@ -28,7 +28,7 @@
           <v-icon> mdi-undo </v-icon>Back</v-btn
         >
         <v-btn
-          :disabled="!nextPlayerAvailable"
+          :disabled="!nextPlayerAvailable || showScoredWarning"
           @click="nextPlayer"
           small
           color="primary"
@@ -41,7 +41,7 @@
       <v-col cols="4" class="text-right">
         <v-btn
           small
-          :disabled="nextPlayerAvailable"
+          :disabled="nextPlayerAvailable || showScoredWarning"
           @click="commitRound"
           color="green"
           elevation="2"
@@ -78,6 +78,7 @@ export default {
       "currentPlayerObj",
       "currentRound",
       "playOrder",
+      "showScoredWarning",
       "prevPlayerAvailable",
       "nextPlayerAvailable",
     ]),
