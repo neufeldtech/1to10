@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark>
-      <v-toolbar-title>One to Ten</v-toolbar-title>
+      <v-toolbar-title>1 to 10</v-toolbar-title>
       <v-spacer></v-spacer>
 
       <v-btn icon>
